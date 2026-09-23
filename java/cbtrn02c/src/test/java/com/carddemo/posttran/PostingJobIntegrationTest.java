@@ -84,7 +84,8 @@ class PostingJobIntegrationTest {
         Account account = Account.fromRecord(Files.readAllLines(DATA.resolve("acctdata.txt")).get(1));
         CardXref card = seedCardFor(account);
         String source = Files.readAllLines(DATA.resolve("dailytran.txt")).get(0);
-        String record = makeDaily(source, card.cardNum(), "8888", "0000000010{", "2022-06-10");
+        String record = replace(makeDaily(source, card.cardNum(), "8888", "0000000010{", "2022-06-10"),
+                0, "9999999999999991");
         var execution = launch(List.of(record, record), "duplicate");
         assertEquals(BatchStatus.FAILED, execution.getStatus());
         assertEquals(1L, jdbc.queryForObject(
@@ -115,6 +116,7 @@ class PostingJobIntegrationTest {
     }
 
     private static String makeDaily(String raw, String card, String category, String amount, String date) {
+        raw = replace(raw, 16, "01");
         raw = replace(raw, 18, category);
         raw = replace(raw, 132, amount);
         raw = replace(raw, 262, card);
