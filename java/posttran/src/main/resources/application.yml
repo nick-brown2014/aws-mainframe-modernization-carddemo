@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: posttran
+  datasource:
+    url: jdbc:h2:file:./posttran-db;AUTO_SERVER=TRUE
+    username: sa
+    password: ""
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: true
+
+posttran:
+  # DD DALYTRAN / DD DALYREJS
+  dalytran: ../../app/data/ASCII/dailytran.txt
+  dalyrejs: ./dalyrejs.txt
+  chunk-size: 100
+  # Optional one-time load of the VSAM extracts into the relational tables
+  load:
+    acctfile: ""
+    xreffile: ""
+    tcatbalf: ""
+    truncate: false
+
+logging:
+  level:
+    com.carddemo.posttran: INFO
