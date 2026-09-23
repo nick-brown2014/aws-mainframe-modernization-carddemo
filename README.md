@@ -350,6 +350,12 @@ Admin users can perform the following functions:
 | **Base Application** | Customer<br>Account<br>Card<br>Transaction<br>Bill Payment<br>Statement/Report | COBOL<br>CICS<br>JCL (Batch)<br>VSAM (KSDS with AIX) |
 | **Optional Features** | Authorization<br>Fraud<br>Transaction Type (Extension) | DB2<br>MQ<br>IMS DB<br>JCL Utilities<br>Complex data formats<br>Various dataset types<br>Advanced copybook structures |
 
+## Modernization specs
+
+Functional/technical specifications written to drive re-implementation of individual CardDemo components:
+
+- [CBTRN02C — Daily Transaction Posting (POSTTRAN)](./docs/specs/CBTRN02C.md)
+
 ## Support
 
 For questions, issues, or improvement requests, please raise an issue in the repository with detailed information about your concern. The maintainers will respond according to availability.
